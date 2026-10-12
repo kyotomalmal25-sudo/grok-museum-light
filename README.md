@@ -46,3 +46,7 @@ Grok/xAI names, trademarks, and the Grok logo remain the property of their respe
 ## Changelog
 
 - **1.0.0 — 2026-10-12:** Initial light-mode release, including conversation, Imagine, Automations, and Library adjustments.
+
+## Dark theme / ダーク版
+
+[Grok — Silver Dots Dark](DARK.md): 動くドット背景、銀色ロゴ、墨色の入力欄と回転する銀色の枠。

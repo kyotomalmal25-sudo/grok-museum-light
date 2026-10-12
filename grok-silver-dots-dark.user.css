@@ -1,0 +1,448 @@
+/* ==UserStyle==
+@name         Grok — Silver Dots Dark
+@namespace    https://github.com/kyotomalmal25-sudo/grok-museum-light/dark
+@version      1.0.0
+@author       チンパンジー (Chimpanzee)
+@license      CC0-1.0
+@description  Grokのダークモードを動くドット背景、銀色ロゴ、墨色の入力欄と回転する銀色の枠でカスタマイズ。Imagineの送信マークにも対応。
+@homepageURL  https://github.com/kyotomalmal25-sudo/grok-museum-light
+@supportURL   https://github.com/kyotomalmal25-sudo/grok-museum-light/issues
+@updateURL    https://raw.githubusercontent.com/kyotomalmal25-sudo/grok-museum-light/main/grok-silver-dots-dark.user.css
+==/UserStyle== */
+
+@-moz-document domain("grok.com") {
+/* ===== Grok：動くドットのダークモード ===== */
+
+html.dark {
+  --surface-base: #111112 !important;
+  --color-surface-base: #111112 !important;
+  --surface-composer: #202022 !important;
+  --border-composer: #39393d !important;
+}
+
+/* 全体の背景 */
+html.dark body,
+html.dark #grok-app-root,
+html.dark #grok-content-area,
+html.dark [class~="group/app-sidebar"] {
+  background-color: #111112 !important;
+}
+
+/* ===== 右側：最初のドット背景 ===== */
+
+html.dark #grok-content-area {
+  position: relative;
+  isolation: isolate;
+}
+
+html.dark #grok-content-area::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #85858d 1px, transparent 1.4px);
+  background-size: 14px 14px;
+  opacity: .38;
+  -webkit-mask-image: radial-gradient(ellipse at 15% 35%, #000 0%, transparent 55%), radial-gradient(ellipse at 85% 65%, #000 0%, transparent 55%);
+  mask-image: radial-gradient(ellipse at 15% 35%, #000 0%, transparent 55%), radial-gradient(ellipse at 85% 65%, #000 0%, transparent 55%);
+  -webkit-mask-size: 145% 145%, 135% 150%;
+  mask-size: 145% 145%, 135% 150%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  animation: grokDotsBreathe 26s ease-in-out infinite alternate;
+}
+
+/* 中央の文字・入力欄周辺を静かに */
+html.dark #grok-content-area::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 38% 43% at 55% 43%,
+    #111112 0%,
+    rgba(17, 17, 18, .96) 35%,
+    rgba(17, 17, 18, .6) 65%,
+    transparent 100%
+  );
+}
+
+/* ===== 左メニュー：薄いドット背景 ===== */
+
+html.dark [class~="group/app-sidebar"] {
+  isolation: isolate;
+}
+
+html.dark [class~="group/app-sidebar"] > [data-sidebar="sidebar"] {
+  position: relative;
+  isolation: isolate;
+  background-color: transparent !important;
+}
+
+html.dark [data-sidebar="sidebar"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #777780 .7px, transparent 1.1px);
+  background-size: 14px 14px;
+  opacity: .07 !important;
+  -webkit-mask-image: radial-gradient(ellipse at 15% 35%, #000 0%, transparent 55%), radial-gradient(ellipse at 85% 65%, #000 0%, transparent 55%);
+  mask-image: radial-gradient(ellipse at 15% 35%, #000 0%, transparent 55%), radial-gradient(ellipse at 85% 65%, #000 0%, transparent 55%);
+  -webkit-mask-size: 145% 145%, 135% 150%;
+  mask-size: 145% 145%, 135% 150%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  animation: grokDotsBreathe 26s ease-in-out infinite alternate;
+}
+
+/* ===== ドットの明暗をゆっくり動かす ===== */
+
+@keyframes grokDotsBreathe {
+  0% {
+    -webkit-mask-position: 0% 10%, 100% 85%;
+    mask-position: 0% 10%, 100% 85%;
+    opacity: .26;
+  }
+
+  50% {
+    -webkit-mask-position: 65% 65%, 35% 20%;
+    mask-position: 65% 65%, 35% 20%;
+    opacity: .42;
+  }
+
+  100% {
+    -webkit-mask-position: 100% 85%, 0% 5%;
+    mask-position: 100% 85%, 0% 5%;
+    opacity: .3;
+  }
+}
+
+/* ===== Grokアイコンと文字 ===== */
+
+html.dark #grok-content-area h1.text-center:has(> span.relative.inline-block) {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 0 !important;
+}
+
+html.dark #grok-content-area h1.text-center:has(> span.relative.inline-block) > * {
+  display: none !important;
+}
+
+html.dark #grok-content-area h1.text-center:has(> span.relative.inline-block)::before {
+  --grok-dark-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 35 33'%3E%3Cpath d='M13.2371 21.0407L24.3186 12.8506C24.8619 12.4491 25.6384 12.6057 25.8973 13.2294C27.2597 16.5185 26.651 20.4712 23.9403 23.1851C21.2297 25.8989 17.4581 26.4941 14.0108 25.1386L10.2449 26.8843C15.6463 30.5806 22.2053 29.6665 26.304 25.5601C29.5551 22.3051 30.562 17.8683 29.6205 13.8673L29.629 13.8758C28.2637 7.99809 29.9647 5.64871 33.449 0.844576C33.5314 0.730667 33.6139 0.616757 33.6964 0.5L29.1113 5.09055V5.07631L13.2343 21.0436'/%3E%3Cpath d='M10.9503 23.0313C7.07343 19.3235 7.74185 13.5853 11.0498 10.2763C13.4959 7.82722 17.5036 6.82767 21.0021 8.2971L24.7595 6.55998C24.0826 6.07017 23.215 5.54334 22.2195 5.17313C17.7198 3.31926 12.3326 4.24192 8.67479 7.90126C5.15635 11.4239 4.0499 16.8403 5.94992 21.4622C7.36924 24.9165 5.04257 27.3598 2.69884 29.826C1.86829 30.7002 1.0349 31.5745 0.36364 32.5L10.9474 23.0341'/%3E%3C/svg%3E");
+
+  content: "";
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  background: #e9e7e0 !important;
+  -webkit-mask: var(--grok-dark-icon) center / contain no-repeat !important;
+  mask: var(--grok-dark-icon) center / contain no-repeat !important;
+}
+
+html.dark #grok-content-area h1.text-center:has(> span.relative.inline-block)::after {
+  content: "Grok";
+  font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  background: none !important;
+  color: #e9e7e0 !important;
+  -webkit-text-fill-color: #e9e7e0 !important;
+}
+
+/* ===== 入力欄 ===== */
+
+html.dark .query-bar {
+  background-color: #202022 !important;
+  border: 1px solid #39393d !important;
+  box-shadow: 0 16px 45px -28px rgba(0, 0, 0, .75) !important;
+}
+
+html.dark .query-bar:focus-within {
+  border-color: #626269 !important;
+}
+
+/* 動きを減らす設定 */
+@media (prefers-reduced-motion: reduce) {
+  html.dark #grok-content-area::before,
+  html.dark [data-sidebar="sidebar"]::before {
+    animation: none !important;
+    -webkit-mask-position: 35% 30%, 70% 65%;
+    mask-position: 35% 30%, 70% 65%;
+  }
+
+  html.dark #grok-content-area::before {
+    opacity: .3;
+  }
+}/* ダークモード：銀色の反射 */
+html.dark {
+  --grok-silver-finish:
+    linear-gradient(
+      115deg,
+      transparent 20%,
+      rgba(190, 231, 255, .35) 38%,
+      rgba(255, 255, 255, .65) 43%,
+      transparent 49%,
+      rgba(241, 212, 181, .25) 68%,
+      transparent 80%
+    ),
+    linear-gradient(
+      180deg,
+      #dce5ed 0%,
+      #7e8993 5%,
+      #343a40 15%,
+      #25292e 29%,
+      #626a74 40%,
+      #c4e5f4 48%,
+      #fff8ec 53%,
+      #b4a69a 60%,
+      #82858c 71%,
+      #bfc4ca 88%,
+      #edf0f3 100%
+    );
+}
+
+/* アイコン：既存のマスクに銀色を流し込む */
+html.dark #grok-content-area h1.text-center:has(> span.relative.inline-block)::before {
+  background: var(--grok-silver-finish) !important;
+  filter:
+    drop-shadow(0 1px 1px rgba(0, 0, 0, .65))
+    drop-shadow(0 0 4px rgba(199, 224, 244, .18));
+}
+
+/* Grokの文字 */
+html.dark #grok-content-area h1.text-center:has(> span.relative.inline-block)::after {
+  background: var(--grok-silver-finish) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  -webkit-text-stroke: .3px rgba(219, 230, 241, .4);
+  filter:
+    drop-shadow(0 1px 1px rgba(0, 0, 0, .65))
+    drop-shadow(0 0 5px rgba(199, 224, 244, .15));
+}/* ロゴの間隔 */
+html.dark #grok-content-area h1.text-center:has(> span.relative.inline-block) {
+  gap: 16px;
+}
+
+/* アイコン：42px → 54px */
+html.dark #grok-content-area h1.text-center:has(> span.relative.inline-block)::before {
+  width: 54px;
+  height: 54px;
+  flex: 0 0 54px;
+  filter:
+    brightness(1.25)
+    drop-shadow(0 0 3px rgba(225, 241, 255, .4))
+    drop-shadow(0 0 12px rgba(190, 222, 255, .22));
+}
+
+/* 文字：50px → 66px */
+html.dark #grok-content-area h1.text-center:has(> span.relative.inline-block)::after {
+  font-size: 66px;
+  letter-spacing: -2px;
+  -webkit-text-stroke: .4px rgba(230, 240, 250, .55);
+  filter:
+    brightness(1.25)
+    drop-shadow(0 0 3px rgba(225, 241, 255, .35))
+    drop-shadow(0 0 14px rgba(190, 222, 255, .2));
+}/* ロゴの間隔 */
+html.dark #grok-content-area h1.text-center:has(> span.relative.inline-block) {
+  gap: 13px;
+}
+
+/* アイコン：54px → 48px */
+html.dark #grok-content-area h1.text-center:has(> span.relative.inline-block)::before {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  filter:
+    brightness(1.3)
+    drop-shadow(0 0 3px rgba(225, 241, 255, .45))
+    drop-shadow(0 0 10px rgba(190, 222, 255, .24));
+}
+
+/* 文字：66px → 58px、縁取りと光を控えめに */
+html.dark #grok-content-area h1.text-center:has(> span.relative.inline-block)::after {
+  font-size: 58px;
+  letter-spacing: -1.7px;
+  -webkit-text-stroke: .15px rgba(230, 240, 250, .3);
+  filter:
+    brightness(1.18)
+    drop-shadow(0 0 2px rgba(225, 241, 255, .22))
+    drop-shadow(0 0 9px rgba(190, 222, 255, .14));
+}/* 回転するグラデーション枠 */
+@property --grok-border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+html.dark .query-bar {
+  --grok-border-angle: 0deg;
+
+  background:
+    linear-gradient(#202022, #202022) padding-box,
+    conic-gradient(
+      from var(--grok-border-angle),
+      #555e69 0deg,
+      #b8d5e8 45deg,
+      #f2f7fc 75deg,
+      #8c939d 110deg,
+      #343a42 150deg,
+      #555e69 180deg,
+      #c7b5a3 225deg,
+      #fff5e6 255deg,
+      #a3a8b0 290deg,
+      #343a42 330deg,
+      #555e69 360deg
+    ) border-box !important;
+
+  border: 2px solid transparent !important;
+  box-shadow:
+    0 0 12px rgba(190, 222, 255, .07),
+    0 16px 45px -28px rgba(0, 0, 0, .75) !important;
+
+  animation: grokSilverBorder 14s linear infinite;
+}
+
+/* フォーカス時もグラデーション枠を維持 */
+html.dark .query-bar:focus-within {
+  border-color: transparent !important;
+  box-shadow:
+    0 0 18px rgba(190, 222, 255, .13),
+    0 16px 45px -28px rgba(0, 0, 0, .75) !important;
+}
+
+@keyframes grokSilverBorder {
+  to {
+    --grok-border-angle: 360deg;
+  }
+}
+
+/* 動きを減らす設定 */
+@media (prefers-reduced-motion: reduce) {
+  html.dark .query-bar {
+    animation: none !important;
+  }
+}/* 銀色の光が、黒に溶けながら回る枠 */
+html.dark .query-bar {
+  background:
+    linear-gradient(#202022, #202022) padding-box,
+    conic-gradient(
+      from var(--grok-border-angle),
+      #111112 0deg,
+      #111112 35deg,
+      #303740 55deg,
+      #b8d5e8 75deg,
+      #f2f7fc 88deg,
+      #697480 105deg,
+      #111112 130deg,
+      #111112 205deg,
+      #494039 225deg,
+      #c7b5a3 245deg,
+      #fff5e6 258deg,
+      #85878d 275deg,
+      #111112 305deg,
+      #111112 360deg
+    ) border-box !important;
+
+  box-shadow:
+    0 0 10px rgba(190, 222, 255, .04),
+    0 16px 45px -28px rgba(0, 0, 0, .75) !important;
+}
+
+html.dark .query-bar:focus-within {
+  box-shadow:
+    0 0 14px rgba(190, 222, 255, .08),
+    0 16px 45px -28px rgba(0, 0, 0, .75) !important;
+}html.dark .query-bar {
+  --surface-composer: #111112 !important;
+
+  background:
+    linear-gradient(#111112, #111112) padding-box,
+    conic-gradient(
+      from var(--grok-border-angle),
+      #111112 0deg,
+      #111112 35deg,
+      #303740 55deg,
+      #b8d5e8 75deg,
+      #f2f7fc 88deg,
+      #697480 105deg,
+      #111112 130deg,
+      #111112 205deg,
+      #494039 225deg,
+      #c7b5a3 245deg,
+      #fff5e6 258deg,
+      #85878d 275deg,
+      #111112 305deg,
+      #111112 360deg
+    ) border-box !important;
+}html.dark .query-bar {
+  --surface-composer: #181817 !important;
+
+  background:
+    linear-gradient(#181817, #181817) padding-box,
+    conic-gradient(
+      from var(--grok-border-angle),
+      #111112 0deg,
+      #111112 35deg,
+      #303740 55deg,
+      #b8d5e8 75deg,
+      #f2f7fc 88deg,
+      #697480 105deg,
+      #111112 130deg,
+      #111112 205deg,
+      #494039 225deg,
+      #c7b5a3 245deg,
+      #fff5e6 258deg,
+      #85878d 275deg,
+      #111112 305deg,
+      #111112 360deg
+    ) border-box !important;
+}/* 音声モードのマークを銀色に */
+html.dark .query-bar button:has(svg [id="name=voice-mode"]),
+html.dark .query-bar button[aria-label^="音声モード"] {
+  color: #b8c8d5 !important;
+  --fg-accent: #b8c8d5 !important;
+}
+
+/* ホバー時 */
+html.dark .query-bar button:has(svg [id="name=voice-mode"]):hover,
+html.dark .query-bar button[aria-label^="音声モード"]:hover {
+  color: #edf4fa !important;
+  --fg-accent: #edf4fa !important;
+}/* Imagine：送信マークを銀色に */
+html.dark #grok-app-root:has([aria-label="生成モード"]) button[aria-label="送信"] > div {
+  --button-filled: #181817 !important;
+  background-color: #181817 !important;
+  color: #b8c8d5 !important;
+}
+
+html.dark #grok-app-root:has([aria-label="生成モード"]) button[aria-label="送信"] > div::before {
+  background-color: #181817 !important;
+}
+
+/* 送信可能な時のホバー */
+html.dark #grok-app-root:has([aria-label="生成モード"]) button[aria-label="送信"]:not(:disabled):hover > div {
+  color: #edf4fa !important;
+  background-color: #252625 !important;
+  --button-filled: #252625 !important;
+}
+
+html.dark #grok-app-root:has([aria-label="生成モード"]) button[aria-label="送信"]:not(:disabled):hover > div::before {
+  background-color: #252625 !important;
+}/* 右側のドットだけ、わずかに暗く */
+html.dark #grok-content-area::before {
+  background-image: radial-gradient(circle, #787880 1px, transparent 1.4px);
+}
+}
