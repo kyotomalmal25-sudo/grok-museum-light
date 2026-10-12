@@ -2,6 +2,8 @@
 
 Grokのダークモードを、動くドット背景と銀色の反射でまとめたStylus用テーマです。
 
+[UserStyles.worldからインストール](https://userstyles.world/style/30778/grok-silver-dots-dark)
+
 ![Grok Silver Dots Dark preview](preview-dark.png)
 
 ## 使い方
