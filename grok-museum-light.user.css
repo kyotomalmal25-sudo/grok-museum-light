@@ -1,0 +1,492 @@
+/* ==UserStyle==
+@name         Grok — Museum Light
+@namespace    https://github.com/kyotomalmal25-sudo/grok-museum-light
+@version      1.0.0
+@author       チンパンジー (Chimpanzee)
+@license      CC0-1.0
+@description  Grokのライトモードを生成りとオリーブで統一。会話、Imagine、自動化、ライブラリに対応。
+@homepageURL  https://github.com/kyotomalmal25-sudo/grok-museum-light
+@supportURL   https://github.com/kyotomalmal25-sudo/grok-museum-light/issues
+@updateURL    https://raw.githubusercontent.com/kyotomalmal25-sudo/grok-museum-light/main/grok-museum-light.user.css
+==/UserStyle== */
+
+@-moz-document domain("grok.com") {
+/* Light mode: warm background, black Grok mark, darker gradient text. */
+html:not(.dark) body,
+html:not(.dark) #grok-content-area,
+html:not(.dark) [class~="group/app-sidebar"],
+html:not(.dark) [class~="group/app-sidebar"] > .bg-surface-base {
+  background-color: #fcf7e8 !important;
+}
+
+html:not(.dark) #grok-content-area h1.text-center:has(> span.relative.inline-block) {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 0 !important;
+}
+
+html:not(.dark) #grok-content-area h1.text-center:has(> span.relative.inline-block) > * {
+  display: none !important;
+}
+
+html:not(.dark) #grok-content-area h1.text-center:has(> span.relative.inline-block)::before {
+  content: "";
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  background: #111111 !important;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 35 33'%3E%3Cpath d='M13.2371 21.0407L24.3186 12.8506C24.8619 12.4491 25.6384 12.6057 25.8973 13.2294C27.2597 16.5185 26.651 20.4712 23.9403 23.1851C21.2297 25.8989 17.4581 26.4941 14.0108 25.1386L10.2449 26.8843C15.6463 30.5806 22.2053 29.6665 26.304 25.5601C29.5551 22.3051 30.562 17.8683 29.6205 13.8673L29.629 13.8758C28.2637 7.99809 29.9647 5.64871 33.449 0.844576C33.5314 0.730667 33.6139 0.616757 33.6964 0.5L29.1113 5.09055V5.07631L13.2343 21.0436'/%3E%3Cpath d='M10.9503 23.0313C7.07343 19.3235 7.74185 13.5853 11.0498 10.2763C13.4959 7.82722 17.5036 6.82767 21.0021 8.2971L24.7595 6.55998C24.0826 6.07017 23.215 5.54334 22.2195 5.17313C17.7198 3.31926 12.3326 4.24192 8.67479 7.90126C5.15635 11.4239 4.0499 16.8403 5.94992 21.4622C7.36924 24.9165 5.04257 27.3598 2.69884 29.826C1.86829 30.7002 1.0349 31.5745 0.36364 32.5L10.9474 23.0341'/%3E%3C/svg%3E") center / contain no-repeat !important;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 35 33'%3E%3Cpath d='M13.2371 21.0407L24.3186 12.8506C24.8619 12.4491 25.6384 12.6057 25.8973 13.2294C27.2597 16.5185 26.651 20.4712 23.9403 23.1851C21.2297 25.8989 17.4581 26.4941 14.0108 25.1386L10.2449 26.8843C15.6463 30.5806 22.2053 29.6665 26.304 25.5601C29.5551 22.3051 30.562 17.8683 29.6205 13.8673L29.629 13.8758C28.2637 7.99809 29.9647 5.64871 33.449 0.844576C33.5314 0.730667 33.6139 0.616757 33.6964 0.5L29.1113 5.09055V5.07631L13.2343 21.0436'/%3E%3Cpath d='M10.9503 23.0313C7.07343 19.3235 7.74185 13.5853 11.0498 10.2763C13.4959 7.82722 17.5036 6.82767 21.0021 8.2971L24.7595 6.55998C24.0826 6.07017 23.215 5.54334 22.2195 5.17313C17.7198 3.31926 12.3326 4.24192 8.67479 7.90126C5.15635 11.4239 4.0499 16.8403 5.94992 21.4622C7.36924 24.9165 5.04257 27.3598 2.69884 29.826C1.86829 30.7002 1.0349 31.5745 0.36364 32.5L10.9474 23.0341'/%3E%3C/svg%3E") center / contain no-repeat !important;
+}
+
+html:not(.dark) #grok-content-area h1.text-center:has(> span.relative.inline-block)::after {
+  content: "Grok";
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  background: linear-gradient(127deg, #111111 16%, #ffd445 21%, #111111 27%, #111111 49%, #111111 66%, #ffaa00 70%, #111111 75%, #111111 92%) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
+/* =========================================================
+   GROK / MUSEUM LIGHT
+   Reference: https://chimpanzee-museum-v2.pages.dev/
+   Light mode only. Paste this whole file into a grok.com style.
+   ========================================================= */
+
+html:not(.dark) {
+  --museum-paper: #fcf7e8;
+  --museum-panel: #f2ecda;
+  --museum-card: #faf6eb;
+  --museum-mat: #f2eada;
+  --museum-ink: #3d3530;
+  --museum-muted: #6c6057;
+  --museum-faint: #8c8073;
+  --museum-line: #e8dfcb;
+  --museum-line-strong: #d9cdb4;
+  --museum-olive: #4f5835;
+  --museum-olive-hover: #6a7446;
+  --museum-olive-soft: #e6e7ce;
+  --museum-shadow: 0 24px 60px -30px rgba(92,70,40,.30), 0 2px 8px -3px rgba(92,70,40,.10);
+
+  --surface-base: var(--museum-paper) !important;
+  --surface-l1: var(--museum-card) !important;
+  --surface-l1-hover: var(--museum-mat) !important;
+  --surface-l2: var(--museum-mat) !important;
+  --surface-l2-active: #ece3cf !important;
+  --surface-l3: #ece3cf !important;
+  --surface-l4: #e4d9c2 !important;
+  --surface-elevated: var(--museum-card) !important;
+  --surface-inset: var(--museum-panel) !important;
+  --surface-composer: var(--museum-card) !important;
+  --fg-primary: var(--museum-ink) !important;
+  --fg-secondary: var(--museum-muted) !important;
+  --fg-tertiary: var(--museum-faint) !important;
+  --fg-quaternary: var(--museum-faint) !important;
+  --fg-accent: var(--museum-olive) !important;
+  --fg-accent-hover: var(--museum-olive-hover) !important;
+  --fg-link: var(--museum-olive) !important;
+  --fg-link-hover: var(--museum-olive-hover) !important;
+  --fg-invert: var(--museum-card) !important;
+  --border-l1: var(--museum-line) !important;
+  --border-l2: var(--museum-line) !important;
+  --border-l3: var(--museum-line-strong) !important;
+  --border-composer: var(--museum-line-strong) !important;
+  --input-border: var(--museum-line-strong) !important;
+  --input-border-focus: var(--museum-olive) !important;
+  --button-primary: var(--museum-olive) !important;
+  --button-primary-hover: var(--museum-olive-hover) !important;
+  --button-filled: var(--museum-olive) !important;
+  --button-filled-hover: var(--museum-olive-hover) !important;
+  --button-filled-active: #3e4729 !important;
+  --button-secondary: var(--museum-card) !important;
+  --button-secondary-hover: var(--museum-mat) !important;
+  --button-secondary-fill: var(--museum-mat) !important;
+  --button-secondary-fill-hover: var(--museum-olive-soft) !important;
+  --button-secondary-fill-active: #dadfc0 !important;
+  --button-ghost-hover: var(--museum-mat) !important;
+  --button-ghost-active: var(--museum-olive-soft) !important;
+  --sidebar-foreground: var(--museum-ink) !important;
+  --sidebar-accent: var(--museum-olive-soft) !important;
+  --sidebar-accent-foreground: var(--museum-olive) !important;
+  --sidebar-border: var(--museum-line) !important;
+  --sidebar-ring: var(--museum-olive) !important;
+  --ring: var(--museum-olive) !important;
+
+  /* Grok also uses Tailwind color aliases. */
+  --color-surface-base: var(--museum-paper) !important;
+  --color-surface-l1: var(--museum-card) !important;
+  --color-surface-l2: var(--museum-mat) !important;
+  --color-surface-elevated: var(--museum-card) !important;
+  --color-surface-composer: var(--museum-card) !important;
+  --color-fg-primary: var(--museum-ink) !important;
+  --color-fg-secondary: var(--museum-muted) !important;
+  --color-fg-tertiary: var(--museum-faint) !important;
+  --color-fg-accent: var(--museum-olive) !important;
+  --color-border: var(--museum-line) !important;
+  --color-border-l1: var(--museum-line) !important;
+  --color-border-l2: var(--museum-line) !important;
+  --color-border-composer: var(--museum-line-strong) !important;
+}
+
+html:not(.dark) body {
+  color: var(--museum-ink) !important;
+  font-family: "Noto Sans JP", "DM Sans", "Yu Gothic", "Meiryo", system-ui, sans-serif;
+}
+
+/* The top bar and its gradient must use the paper color too. */
+html:not(.dark) #grok-app-root,
+html:not(.dark) #grok-content-area,
+html:not(.dark) #grok-app-root > div:has(> header),
+html:not(.dark) header:has(nav[aria-label="Top navigation"]) {
+  background-color: var(--museum-paper) !important;
+}
+
+html:not(.dark) nav[aria-label="Top navigation"] > [aria-hidden="true"] {
+  background-image: linear-gradient(to bottom, #fcf7e8 0%, #fcf7e8 70%, rgba(252,247,232,0) 100%) !important;
+}
+
+/* Warm, framed sidebar panel, preserving the existing open/close behavior. */
+html:not(.dark) [class~="group/app-sidebar"],
+html:not(.dark) [class~="group/app-sidebar"] > [data-sidebar="sidebar"] {
+  background-color: var(--museum-panel) !important;
+  color: var(--museum-ink) !important;
+  border-color: var(--museum-line) !important;
+}
+
+@media (min-width: 768px) {
+  html:not(.dark) [data-state="expanded"] > [class~="group/app-sidebar"] {
+    box-sizing: border-box;
+    width: calc(var(--sidebar-width) - 24px) !important;
+    height: calc(100% - 32px) !important;
+    margin: 16px 12px;
+    border: 1px solid var(--museum-line) !important;
+    border-radius: 20px;
+    box-shadow: var(--museum-shadow);
+  }
+
+  html:not(.dark) [data-state="expanded"] > [class~="group/app-sidebar"] > [data-sidebar="sidebar"] {
+    width: 100% !important;
+  }
+}
+
+html:not(.dark) [data-sidebar="header"] {
+  border-bottom: 1px solid var(--museum-line);
+  margin-bottom: 12px;
+}
+
+html:not(.dark) [data-sidebar="footer"] {
+  border-top: 1px solid var(--museum-line);
+  padding-top: 10px;
+}
+
+html:not(.dark) [data-sidebar="menu"] {
+  gap: 5px;
+}
+
+html:not(.dark) [data-sidebar="menu-button"] {
+  border-radius: 7px !important;
+  color: var(--museum-ink) !important;
+  font-size: 13px;
+  letter-spacing: .025em;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+html:not(.dark) [data-sidebar="menu-button"]:hover,
+html:not(.dark) [data-sidebar="menu-button"]:focus-visible {
+  background-color: var(--museum-mat) !important;
+  color: var(--museum-olive) !important;
+}
+
+html:not(.dark) [data-sidebar="menu-button"][data-active="true"],
+html:not(.dark) [data-sidebar="menu-button"][aria-current="page"],
+html:not(.dark) [data-sidebar="menu-button"][aria-expanded="true"],
+html:not(.dark) [data-sidebar="menu-button"][data-state="open"] {
+  background-color: var(--museum-olive-soft) !important;
+  color: var(--museum-olive) !important;
+  box-shadow: inset 0 0 0 1px rgba(79,88,53,.10);
+}
+
+/* Grok home uses data-active=false even for its current home link. */
+html:not(.dark) #grok-app-root:has(#grok-content-area h1.text-center > span.relative.inline-block) [data-testid="new-chat"] {
+  background-color: var(--museum-olive-soft) !important;
+  color: var(--museum-olive) !important;
+  box-shadow: inset 0 0 0 1px rgba(79,88,53,.10);
+}
+
+html:not(.dark) [data-sidebar="icon"] {
+  color: inherit !important;
+}
+
+html:not(.dark) [data-sidebar="group-label"],
+html:not(.dark) [data-sidebar="content"] [data-sidebar="menu-button"][aria-expanded] {
+  color: var(--museum-faint) !important;
+  font-size: 11px;
+  letter-spacing: .09em;
+}
+
+/* Paper-like composer, with a fine frame and soft warm shadow. */
+html:not(.dark) .query-bar {
+  --surface-composer: var(--museum-card) !important;
+  --composer-radius: 15px !important;
+  --border-t-radius: 15px !important;
+  --border-b-radius: 15px !important;
+  background-color: var(--museum-card) !important;
+  border: 1px solid var(--museum-line-strong) !important;
+  box-shadow: var(--museum-shadow) !important;
+  transition: border-color 180ms ease, box-shadow 180ms ease !important;
+}
+
+html:not(.dark) .query-bar:focus-within {
+  border-color: #9aa17c !important;
+  box-shadow: 0 0 0 3px rgba(79,88,53,.07), var(--museum-shadow) !important;
+}
+
+html:not(.dark) .query-bar .ProseMirror {
+  color: var(--museum-ink) !important;
+  caret-color: var(--museum-olive);
+  line-height: 1.75;
+}
+
+html:not(.dark) .query-bar .text-fg-secondary,
+html:not(.dark) .query-bar .text-fg-tertiary,
+html:not(.dark) .query-bar [data-placeholder]::before {
+  color: var(--museum-faint) !important;
+}
+
+html:not(.dark) .query-bar [data-slot="button"] {
+  border-radius: 9px;
+}
+
+html:not(.dark) .query-bar .text-fg-accent,
+html:not(.dark) .query-bar .text-fg-electric-blue {
+  color: var(--museum-olive) !important;
+}
+
+/* Dropdowns, dialogs, search, and other raised surfaces. */
+html:not(.dark) [role="menu"],
+html:not(.dark) [role="listbox"],
+html:not(.dark) [role="dialog"] {
+  background-color: var(--museum-card) !important;
+  color: var(--museum-ink) !important;
+  border-color: var(--museum-line-strong) !important;
+  border-radius: 14px;
+  box-shadow: var(--museum-shadow);
+}
+
+html:not(.dark) [role="menuitem"][data-highlighted],
+html:not(.dark) [role="option"][aria-selected="true"] {
+  background-color: var(--museum-olive-soft) !important;
+  color: var(--museum-olive) !important;
+}
+
+html:not(.dark) [role="dialog"] input,
+html:not(.dark) [role="dialog"] textarea {
+  background-color: var(--museum-paper);
+  color: var(--museum-ink);
+  border-color: var(--museum-line-strong);
+}
+
+/* Code retains its own monospace font. */
+html:not(.dark) #grok-content-area pre {
+  background-color: var(--museum-mat) !important;
+  border: 1px solid var(--museum-line);
+  border-radius: 12px;
+}
+
+html:not(.dark) #grok-content-area a:not([data-slot="button"]) {
+  text-decoration-color: #9aa17c;
+  text-underline-offset: 3px;
+}
+
+/* Keep the upgrade card and its controls, restyled as a museum card. */
+html:not(.dark) .upsell-small {
+  --fg-primary: var(--museum-ink) !important;
+  --fg-secondary: var(--museum-muted) !important;
+  --button-filled: var(--museum-olive) !important;
+  --button-filled-hover: var(--museum-olive-hover) !important;
+  --fg-invert: var(--museum-card) !important;
+  background: var(--museum-panel) !important;
+  color: var(--museum-ink) !important;
+  border: 1px solid var(--museum-line-strong) !important;
+  border-radius: 15px !important;
+  box-shadow: var(--museum-shadow) !important;
+}
+
+html:not(.dark) .upsell-small > canvas,
+html:not(.dark) .upsell-small > div.absolute {
+  opacity: 0 !important;
+}
+
+html:not(.dark) .upsell-small svg[aria-label="SuperGrok"] path {
+  fill: var(--museum-ink) !important;
+}
+
+html:not(.dark) .upsell-small .text-fg-secondary {
+  color: var(--museum-muted) !important;
+}
+
+html:not(.dark) .upsell-small .bg-button-filled {
+  background-color: var(--museum-olive) !important;
+  color: var(--museum-card) !important;
+  border-color: transparent !important;
+  border-radius: 8px !important;
+}
+
+html:not(.dark) .upsell-small .bg-button-filled:hover {
+  background-color: var(--museum-olive-hover) !important;
+}
+
+html:not(.dark) .upsell-small button[aria-label="案内を非表示"] {
+  background-color: var(--museum-mat) !important;
+  color: var(--museum-ink) !important;
+}
+
+html:not(.dark) ::selection {
+  background: #e6e7ce;
+  color: #3d3530;
+}
+
+html:not(.dark) #grok-app-root * {
+  scrollbar-color: #c9bca3 transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:not(.dark) .query-bar,
+  html:not(.dark) [data-sidebar="menu-button"] {
+    transition: none !important;
+  }
+}/* ライトモード：美術館に馴染むGrokロゴ */
+html:not(.dark) #grok-content-area h1.text-center:has(> span.relative.inline-block) {
+  gap: 10px;
+}
+
+html:not(.dark) #grok-content-area h1.text-center:has(> span.relative.inline-block)::before {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  background: #3d3530 !important;
+}
+
+html:not(.dark) #grok-content-area h1.text-center:has(> span.relative.inline-block)::after {
+  content: "Grok";
+  font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  background: none !important;
+  color: #4f5835 !important;
+  -webkit-text-fill-color: #4f5835 !important;
+}/* Imagine：送信ボタン */
+html:not(.dark) #grok-app-root:has([aria-label="生成モード"]) button[aria-label="送信"] > div {
+  --fg-accent: #4f5835 !important;
+  --button-filled: #4f5835 !important;
+  background-color: #4f5835 !important;
+  color: #fcf7e8 !important;
+}
+
+html:not(.dark) #grok-app-root:has([aria-label="生成モード"]) button[aria-label="送信"] > div::before {
+  background-color: #4f5835 !important;
+}
+
+html:not(.dark) #grok-app-root:has([aria-label="生成モード"]) button[aria-label="送信"]:not(:disabled):hover > div {
+  background-color: #6a7446 !important;
+}
+
+/* モード・生成速度：土台 */
+html:not(.dark) [role="group"]:is([aria-label="生成モード"], [aria-label="画像生成速度"]) {
+  background-color: #f2eada !important;
+}
+
+/* 選択中の背景 */
+html:not(.dark) [role="group"]:is([aria-label="生成モード"], [aria-label="画像生成速度"]) [role="radio"][aria-checked="true"] > .bg-surface-elevated {
+  background-color: #e6e7ce !important;
+  box-shadow: inset 0 0 0 1px #d4d8b8 !important;
+}
+
+/* 選択中の文字・アイコン */
+html:not(.dark) [role="group"]:is([aria-label="生成モード"], [aria-label="画像生成速度"]) [role="radio"][aria-checked="true"] {
+  color: #4f5835 !important;
+}
+
+/* 未選択の文字・アイコン */
+html:not(.dark) [role="group"]:is([aria-label="生成モード"], [aria-label="画像生成速度"]) [role="radio"][aria-checked="false"] {
+  color: #8c8073 !important;
+}
+
+/* アスペクト比 */
+html:not(.dark) #grok-app-root:has([aria-label="生成モード"]) button[aria-label="アスペクト比"] {
+  background-color: #f2eada !important;
+  color: #6c6057 !important;
+}
+
+html:not(.dark) #grok-app-root:has([aria-label="生成モード"]) button[aria-label="アスペクト比"]:hover {
+  background-color: #e6e7ce !important;
+  color: #4f5835 !important;
+}/* 自動化ページ：上部の白い帯 */
+html:not(.dark) #grok-content-area .sticky.bg-surface-base:has([role="tablist"]) {
+  background-color: #fcf7e8 !important;
+}
+
+/* スクロール時の帯の下のグラデーション */
+html:not(.dark) #grok-content-area .sticky.bg-surface-base:has([role="tablist"])::after {
+  background-image: linear-gradient(to bottom, #fcf7e8, transparent) !important;
+}
+
+/* 選択中のタブ背景 */
+html:not(.dark) #grok-content-area .sticky:has([role="tablist"]) [role="tab"][aria-selected="true"] > span.absolute {
+  background-color: #e6e7ce !important;
+  box-shadow: inset 0 0 0 1px #d4d8b8;
+}
+
+/* 選択中のタブ文字 */
+html:not(.dark) #grok-content-area .sticky:has([role="tablist"]) [role="tab"][aria-selected="true"] {
+  color: #4f5835 !important;
+}
+
+/* 未選択のタブ文字 */
+html:not(.dark) #grok-content-area .sticky:has([role="tablist"]) [role="tab"][aria-selected="false"] {
+  color: #8c8073 !important;
+}/* ライブラリ：一覧の背景 */
+html:not(.dark) section.bg-surface-base:has([role="tablist"][aria-label="ライブラリのカテゴリ"]) {
+  background-color: #fcf7e8 !important;
+  color: #3d3530 !important;
+}
+
+/* 上部のタブ周辺 */
+html:not(.dark) .sticky.bg-surface-base:has([role="tablist"][aria-label="ライブラリのカテゴリ"]) {
+  background-color: #fcf7e8 !important;
+}
+
+html:not(.dark) .sticky.bg-surface-base:has([role="tablist"][aria-label="ライブラリのカテゴリ"])::after {
+  background-image: linear-gradient(to bottom, #fcf7e8, transparent) !important;
+}
+
+/* 選択中のカテゴリ */
+html:not(.dark) [role="tablist"][aria-label="ライブラリのカテゴリ"] [role="tab"][aria-selected="true"] > span.absolute {
+  background-color: #e6e7ce !important;
+  box-shadow: inset 0 0 0 1px #d4d8b8;
+}
+
+html:not(.dark) [role="tablist"][aria-label="ライブラリのカテゴリ"] [role="tab"][aria-selected="true"] {
+  color: #4f5835 !important;
+}
+
+/* 未選択のカテゴリ */
+html:not(.dark) [role="tablist"][aria-label="ライブラリのカテゴリ"] [role="tab"][aria-selected="false"] {
+  color: #8c8073 !important;
+}/* 自分の発言の吹き出し */
+html:not(.dark) [data-testid="user-message"] {
+  background-color: #f2eada !important;
+  color: #3d3530 !important;
+  border: 1px solid #e8dfcb;
+  border-radius: 15px !important;
+  box-shadow: 0 2px 8px -4px rgba(92, 70, 40, .12);
+}
+}
