@@ -3,6 +3,8 @@
 Grokのライトモードを、生成りの紙・茶色の文字・オリーブのアクセントでまとめたStylus用テーマです。
 [CHIMPANZEE MUSEUM](https://chimpanzee-museum-v2.pages.dev/)の配色と雰囲気を参考にしています。
 
+[UserStyles.worldからインストール](https://userstyles.world/style/30776/grok-museum-light)
+
 ![Grok Museum Light preview](preview.png)
 
 ## インストール
