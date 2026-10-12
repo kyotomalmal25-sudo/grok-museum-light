@@ -1,11 +1,11 @@
 /* ==UserStyle==
 @name         Grok — Silver Dots Dark
 @namespace    https://github.com/kyotomalmal25-sudo/grok-museum-light/dark
-@version      1.0.0
+@version      1.1.0
 @author       チンパンジー (Chimpanzee)
 @license      CC0-1.0
 @description  Grokのダークモードを動くドット背景、銀色ロゴ、墨色の入力欄と回転する銀色の枠でカスタマイズ。Imagineの送信マークにも対応。
-@homepageURL  https://github.com/kyotomalmal25-sudo/grok-museum-light
+@homepageURL  https://kyotomalmal25-sudo.github.io/banana-needs-no-reason/
 @supportURL   https://github.com/kyotomalmal25-sudo/grok-museum-light/issues
 @updateURL    https://raw.githubusercontent.com/kyotomalmal25-sudo/grok-museum-light/main/grok-silver-dots-dark.user.css
 ==/UserStyle== */
@@ -445,4 +445,248 @@ html.dark #grok-app-root:has([aria-label="生成モード"]) button[aria-label="
 html.dark #grok-content-area::before {
   background-image: radial-gradient(circle, #787880 1px, transparent 1.4px);
 }
+/* ===== Final sidebar: visible dots, no divider, neutral controls ===== */
+html.dark [class~="group/app-sidebar"] {
+  isolation: isolate;
+  background-color: #111112 !important;
+  border-inline-end: 0 !important;
 }
+html.dark [class~="group/app-sidebar"]::after {
+  content: none !important;
+}
+html.dark [class~="group/app-sidebar"] > [data-sidebar="sidebar"] {
+  position: relative;
+  isolation: isolate;
+  background-color: transparent !important;
+}
+html.dark [data-sidebar="sidebar"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #787880 1px, transparent 1.4px);
+  background-size: 14px 14px;
+  opacity: .22 !important;
+  filter: none !important;
+  -webkit-mask-image: radial-gradient(ellipse at 15% 35%, #000 0%, transparent 55%), radial-gradient(ellipse at 85% 65%, #000 0%, transparent 55%);
+  mask-image: radial-gradient(ellipse at 15% 35%, #000 0%, transparent 55%), radial-gradient(ellipse at 85% 65%, #000 0%, transparent 55%);
+  -webkit-mask-size: 145% 145%, 135% 150%;
+  mask-size: 145% 145%, 135% 150%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  animation: grokDotsBreathe 26s ease-in-out infinite alternate !important;
+}
+html.dark [data-sidebar="menu-button"] {
+  color: #dedfe3 !important;
+  font-weight: 500;
+  letter-spacing: .01em;
+}
+html.dark [data-sidebar="icon"] {
+  color: #bfc3cc !important;
+}
+html.dark [data-sidebar="sidebar"] .text-fg-secondary {
+  color: #a9adb6 !important;
+}
+html.dark [data-sidebar="sidebar"] .text-fg-tertiary {
+  color: #9297a2 !important;
+}
+html.dark [data-sidebar="menu-button"][data-active="true"],
+html.dark [data-sidebar="menu-button"][aria-current="page"],
+html.dark [data-sidebar="menu-button"].bg-button-ghost-hover {
+  background-color: #242424 !important;
+  color: #eeeeee !important;
+  box-shadow: none !important;
+}
+html.dark [data-sidebar="menu-button"]:hover {
+  background-color: #1c1c1c !important;
+  color: #eeeeee !important;
+  box-shadow: none !important;
+}
+html.dark [data-sidebar="menu-button"]:focus-visible {
+  outline: 1px solid #b8c8d5 !important;
+  outline-offset: -1px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.dark [data-sidebar="sidebar"]::before {
+    animation: none !important;
+    -webkit-mask-position: 35% 30%, 70% 65%;
+    mask-position: 35% 30%, 70% 65%;
+  }
+}
+html.dark #grok-content-area h1.text-center:has(> span.relative.inline-block)::after {
+  font-size: 52px;
+  font-weight: 400;
+  letter-spacing: -1px;
+  -webkit-text-stroke: 0;
+  filter: brightness(1.12) drop-shadow(0 0 5px rgba(190, 222, 255, .1));
+}
+/* ダークモード：明るい白銀のロゴ */
+html.dark {
+  --grok-silver-finish: linear-gradient(
+    165deg,
+    #ffffff 0%,
+    #d7dfe7 20%,
+    #f5f9fc 38%,
+    #ffffff 48%,
+    #c5d0db 62%,
+    #e5ecf2 80%,
+    #ffffff 100%
+  );
+}
+html.dark {
+  --grok-silver-finish: linear-gradient(
+    165deg,
+    #ffffff 0%,
+    #d7dfe7 20%,
+    #f5f9fc 38%,
+    #fff5e6 48%,
+    #c5d0db 62%,
+    #e5ecf2 80%,
+    #fffaf2 100%
+  );
+}
+html.dark {
+  --grok-silver-finish: linear-gradient(
+    165deg,
+    #ffffff 0%,
+    #d7dfe7 20%,
+    #f5f9fc 35%,
+    #f0dcb9 48%,
+    #fff2dc 55%,
+    #c5d0db 66%,
+    #e5ecf2 82%,
+    #fff3df 100%
+  );
+}
+html.dark #grok-content-area h1.text-center:has(> span.relative.inline-block)::after {
+  font-size: calc(52px - 2pt);
+}
+/* ===== Shared surfaces and controls: desktop review fixes ===== */
+html.dark {
+  --fg-accent: #b8c8d5 !important;
+  --fg-accent-hover: #edf4fa !important;
+  --input-border-focus: #b8c8d5 !important;
+  --sidebar-ring: #b8c8d5 !important;
+  --ring: #b8c8d5 !important;
+}
+/* Keep library content on the same background instead of an opaque section. */
+html.dark #grok-content-area section.bg-surface-base:has([role="tablist"]) {
+  background-color: transparent !important;
+}
+/* Sticky toolbars retain a quiet solid surface while scrolling. */
+html.dark #grok-content-area .sticky.bg-surface-base:has([role="tablist"]) {
+  background-color: #111112 !important;
+}
+html.dark #grok-content-area .sticky.bg-surface-base:has([role="tablist"])::after {
+  background-image: linear-gradient(to bottom, #111112, transparent) !important;
+}
+/* Template fields: thin frame rather than stronger fills. */
+html.dark input[id^="agent-tpl-"],
+html.dark textarea[id^="agent-tpl-"] {
+  box-sizing: border-box;
+  border: 1px solid #343638 !important;
+  background-color: #181817 !important;
+  color: #e4e6e9 !important;
+}
+html.dark input[id^="agent-tpl-"]:focus,
+html.dark textarea[id^="agent-tpl-"]:focus {
+  border-color: #b8c8d5 !important;
+  box-shadow: 0 0 0 2px rgba(184, 200, 213, .1) !important;
+}
+/* Dialog inputs, excluding toggles and upload controls. */
+html.dark [role="dialog"] input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="range"]):not([type="hidden"]),
+html.dark [role="dialog"] textarea {
+  border: 1px solid #343638 !important;
+  outline-color: #b8c8d5 !important;
+}
+html.dark [role="dialog"] input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="range"]):focus,
+html.dark [role="dialog"] textarea:focus {
+  border-color: #b8c8d5 !important;
+  outline: 1px solid rgba(184, 200, 213, .45) !important;
+  outline-offset: 1px;
+  box-shadow: 0 0 0 2px rgba(184, 200, 213, .08) !important;
+}
+/* Automation's composer frame stays visible without animated decoration. */
+html.dark [role="dialog"] .query-bar {
+  animation: none !important;
+  background: #181817 !important;
+  border: 1px solid #343638 !important;
+  box-shadow: none !important;
+}
+html.dark [role="dialog"] .query-bar:focus-within {
+  border-color: #b8c8d5 !important;
+}
+/* Switches: checked silver / unchecked dark, with positions preserved. */
+html.dark [role="switch"][aria-checked="true"] {
+  background: #b8c8d5 !important;
+  border-color: #cbd6df !important;
+}
+html.dark [role="switch"][aria-checked="true"] > span {
+  background-color: #202225 !important;
+}
+html.dark [role="switch"][aria-checked="false"] {
+  background: #303236 !important;
+  border-color: #484b50 !important;
+}
+html.dark [role="switch"]:focus-visible {
+  outline: 2px solid #edf4fa !important;
+  outline-offset: 3px;
+}
+/* Filled primary buttons: bright silver with a subtle champagne reflection. */
+html.dark button.bg-button-filled:not(:disabled) {
+  background: var(--grok-silver-finish, linear-gradient(165deg, #f5f9fc, #d7dfe7, #fff2dc)) !important;
+  color: #202225 !important;
+  border-color: rgba(229, 236, 242, .35) !important;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, .16);
+}
+html.dark button.bg-button-filled:not(:disabled):hover {
+  background: #edf4fa !important;
+  color: #202225 !important;
+}
+/* Preserve disabled controls as a separate, low-emphasis state. */
+html.dark button.bg-button-filled:disabled {
+  background: #45484c !important;
+  color: #aeb5bd !important;
+}
+/* Reading a conversation: slower border movement, normal speed while typing. */
+html.dark #grok-content-area:has([data-testid="user-message"]) .query-bar {
+  animation-duration: 28s !important;
+}
+html.dark #grok-content-area:has([data-testid="user-message"]) .query-bar:focus-within {
+  animation-duration: 14s !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.dark .query-bar {
+    animation: none !important;
+  }
+}
+/* v1.1: uniform sidebar, transparent menus, responsive 1080px chat */
+html.dark [data-sidebar="menu-item"] > span[aria-hidden="true"]:first-child,
+html.dark [data-sidebar="menu-button"],
+html.dark [data-sidebar="menu-button"]:hover,
+html.dark [data-sidebar="menu-button"]:active {
+  background: transparent !important;
+}
+html.dark [data-sidebar="sidebar"] .pointer-events-none.bg-gradient-to-b {
+  display: none !important;
+}
+html.dark [data-sidebar="sidebar"]::before {
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  animation: none !important;
+}
+html.dark [data-sidebar="sidebar"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .15);
+  pointer-events: none;
+  z-index: -1;
+}
+html.dark [class~="@container/chat"] {
+  --content-max-width: min(1080px, calc(100cqw - 64px)) !important;
+}
+
+}
+
