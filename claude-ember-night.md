@@ -2,7 +2,7 @@
 
 Claudeのダーク表示を、暖かい墨色の夜と残り火の光でまとめたStylus用テーマです。立ちのぼる火の粉、呼吸する灯り、ゆっくり回る入力欄の縁。配色からアニメーションまで、Claudeがゼロから設計しています。
 
-[UserStyles.worldからインストール](https://userstyles.world/search?q=Claude%20Ember%20Night)
+[UserStyles.worldからインストール](https://userstyles.world/style/31002/claude-ember-night)
 
 ![Claude Ember Night preview](preview-ember.png)
 
