@@ -54,3 +54,5 @@ Grok/xAI names, trademarks, and the Grok logo remain the property of their respe
 ## Claude theme / Claude版
 
 [Claude — Museum Light](claude-museum-light.md): Claude用のライトテーマ。甘さを抑えた紙色と墨色の文字、浮かぶ角丸のサイドバー、境界線を最小限にした入力欄。
+
+[Claude — Ember Night](claude-ember-night.md): Claude用のダークテーマ。暖かい墨色の夜、立ちのぼる火の粉、ゆっくり回る入力欄の縁。Claudeがゼロから設計。
