@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Claude — Ember Night
 @namespace    https://github.com/kyotomalmal25-sudo/grok-museum-light
-@version      1.1.1
+@version      1.1.2
 @author       チンパンジー (Chimpanzee)
 @license      CC0-1.0
 @description  Claudeのダーク表示を、暖かい墨色の夜と残り火の光で。立ちのぼる火の粉、呼吸する灯り、ゆっくり回る入力欄の縁。
@@ -378,11 +378,32 @@
     box-shadow: inset 0 0 0 1px var(--en-line), inset 0 1px 0 rgba(255, 228, 196, .05) !important;
   }
 
-  html[data-theme="claude"][data-mode="dark"] pre {
-    background: linear-gradient(180deg, #171412, #110f0d) !important;
+  /* Code blocks: Claude wraps <pre> in a framed card that also holds the
+     language label, so the card gets the surface and the ember line, and
+     the <pre> inside stays clear (no box-in-a-box). */
+  html[data-theme="claude"][data-mode="dark"] div:has(> .overflow-x-auto > pre) {
+    background: linear-gradient(180deg, #181513, #110f0d) !important;
     border: 1px solid var(--en-line) !important;
-    border-left: 2px solid rgba(224, 122, 79, .55) !important;
     border-radius: 12px !important;
+    box-shadow: inset 0 1px 0 rgba(255, 228, 196, .04) !important;
+  }
+
+  html[data-theme="claude"][data-mode="dark"] div:has(> .overflow-x-auto > pre)::after {
+    content: "";
+    position: absolute;
+    left: -1px;
+    top: 14px;
+    bottom: 14px;
+    width: 2px;
+    border-radius: 2px;
+    background: linear-gradient(to bottom, rgba(244, 171, 114, .85), rgba(224, 122, 79, .5));
+    box-shadow: 0 0 8px rgba(224, 122, 79, .45);
+    pointer-events: none;
+  }
+
+  html[data-theme="claude"][data-mode="dark"] div:has(> .overflow-x-auto > pre) pre {
+    background: transparent !important;
+    border: 0 !important;
   }
 
   html[data-theme="claude"][data-mode="dark"] ::selection {
