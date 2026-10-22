@@ -50,3 +50,7 @@ Grok/xAI names, trademarks, and the Grok logo remain the property of their respe
 ## Dark theme / ダーク版
 
 [Grok — Silver Dots Dark](DARK.md): 動くドット背景、銀色ロゴ、墨色の入力欄と回転する銀色の枠。
+
+## Claude theme / Claude版
+
+[Claude — Museum Light](claude-museum-light.md): Claude用のライトテーマ。甘さを抑えた紙色と墨色の文字、浮かぶ角丸のサイドバー、境界線を最小限にした入力欄。

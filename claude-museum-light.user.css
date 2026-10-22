@@ -1,0 +1,212 @@
+/* ==UserStyle==
+@name         Claude — Museum Light
+@namespace    https://github.com/kyotomalmal25-sudo/grok-museum-light
+@version      2.5.0
+@author       チンパンジー (Chimpanzee)
+@license      CC0-1.0
+@description  Claudeのライト表示を、くすんだ紙色と墨色の文字で落ち着いた雰囲気に。サイドバーは角丸の浮いたカードに。
+==/UserStyle== */
+
+@-moz-document domain("claude.ai") {
+
+  /* 1. Palette ------------------------------------------------------- */
+  /* Claude re-declares its tokens on every nested .cds-root, so the
+     palette has to be set there too, not only on <html>. */
+  html[data-theme="claude"][data-mode="light"],
+  html[data-theme="claude"][data-mode="light"] .cds-root:not([data-mode="dark"]) {
+    --m-paper: #f7f4ec;          /* page + sidebar */
+    --m-card: #f7f4ec;           /* composer, menus, dialogs */
+    --m-mat: #efebe2;            /* hover, code blocks */
+    --m-ink: #2e2b27;
+    --m-muted: #66605a;
+    --m-faint: #8a847c;
+    --m-line: #e5e0d5;
+    --m-line-strong: #d4cdbf;
+    --m-pick: #e7dfcf;           /* selected row / highlighted item */
+    --m-pick-line: rgba(110, 85, 50, .12);
+    --m-tray: #f3f0e8;           /* sidebar card + composer, between page and mat */
+    --m-raised: linear-gradient(180deg, #fbf9f4 0%, #f5f2ea 100%);   /* sidebar card + composer */
+    --m-highlight: inset 0 1px 0 rgba(255, 255, 255, .9);
+    --m-shadow: 0 18px 40px -28px rgba(60, 50, 40, .35), 0 2px 10px -4px rgba(60, 50, 40, .10);
+
+    /* Claude's own design tokens (accent colors are left native) */
+    --cds-surface-0: var(--m-paper) !important;
+    --cds-surface-1: var(--m-paper) !important;
+    --cds-surface-2: var(--m-card) !important;
+    --cds-surface-3: var(--m-card) !important;
+    --cds-surface-panel: var(--m-card) !important;
+    --cds-surface-popover: var(--m-card) !important;
+    --cds-text-primary: var(--m-ink) !important;
+    --cds-text-secondary: var(--m-muted) !important;
+    --cds-text-muted: var(--m-faint) !important;
+    --cds-border: var(--m-line) !important;
+    --cds-border-strong: var(--m-line-strong) !important;
+    --cds-fill-field: var(--m-card) !important;
+    --cds-fill-ghost-hover: var(--m-mat) !important;
+    --cds-fill-ghost-selected: var(--m-pick) !important;
+    --cds-fill-secondary-hover: var(--m-mat) !important;
+
+    /* legacy HSL tokens */
+    --bg-000: 44 40.7% 94.7% !important;
+    --bg-100: 44 40.7% 94.7% !important;
+    --bg-200: 44 40.7% 94.7% !important;
+    --bg-300: 42 28.9% 91.2% !important;
+    --bg-400: 42 28.9% 91.2% !important;
+    --text-000: 34 8.2% 16.7% !important;
+    --text-100: 34 8.2% 16.7% !important;
+    --text-200: 30 6.2% 37.6% !important;
+    --text-300: 30 6.2% 37.6% !important;
+    --text-400: 34 5.6% 51.4% !important;
+    --text-500: 34 5.6% 51.4% !important;
+    --border-100: 41 23.5% 86.7% !important;
+    --border-200: 41 23.5% 86.7% !important;
+    --border-300: 40 19.6% 79% !important;
+    --border-400: 40 19.6% 79% !important;
+  }
+
+  html[data-theme="claude"][data-mode="light"] body,
+  html[data-theme="claude"][data-mode="light"] .dframe-root[data-mode="light"],
+  html[data-theme="claude"][data-mode="light"] .dframe-content {
+    background-color: var(--m-paper) !important;
+    color: var(--m-ink) !important;
+  }
+
+  html[data-theme="claude"][data-mode="light"] .dframe-root[data-mode="light"] {
+    --df-bg-page: var(--m-paper) !important;
+    --df-surface-primary: 44 40.7% 94.7% !important;
+  }
+
+  /* 2. Sidebar ------------------------------------------------------- */
+  html[data-theme="claude"][data-mode="light"] .dframe-sidebar {
+    background-color: var(--m-paper) !important;
+    color: var(--m-ink) !important;
+  }
+
+  html[data-theme="claude"][data-mode="light"] .dframe-sidebar-body {
+    background: transparent !important;
+    border: 0 !important;
+  }
+
+  /* Floating card only while the sidebar is open */
+  html[data-theme="claude"][data-mode="light"] .dframe-root:not([data-collapsed="true"]) .dframe-sidebar {
+    top: 12px !important;
+    bottom: 12px !important;
+    left: 12px !important;
+    height: auto !important;
+    width: calc(var(--df-sidebar-width, 288px) - 12px) !important;
+    background: var(--m-tray) !important;
+    border: 1px solid rgba(60, 50, 40, .05) !important;
+    border-radius: 20px !important;
+    box-shadow: 6px 0 28px -14px rgba(60, 50, 40, .12), 0 0 1px rgba(60, 50, 40, .06) !important;
+    overflow: hidden !important;
+  }
+
+  /* Rows */
+  html[data-theme="claude"][data-mode="light"] .dframe-sidebar-body [data-row-main-button],
+  html[data-theme="claude"][data-mode="light"] .dframe-sidebar-body .df-search-field {
+    border-radius: 10px !important;
+  }
+
+  html[data-theme="claude"][data-mode="light"] .dframe-sidebar-body [data-row-main-button],
+  html[data-theme="claude"][data-mode="light"] .dframe-sidebar-body [data-row-main-button] * {
+    color: #141414 !important;
+  }
+
+  /* warm hover; the selected row keeps its own color while hovered */
+  html[data-theme="claude"][data-mode="light"] .dframe-sidebar-body [data-row-main-button]:not([aria-current="page"]):hover {
+    background-color: #ede9e0 !important;   /* quieter than the selected row */
+  }
+
+  html[data-theme="claude"][data-mode="light"] .dframe-sidebar-body [aria-current="page"],
+  html[data-theme="claude"][data-mode="light"] .dframe-sidebar-body [aria-current="page"]:hover {
+    background-color: var(--m-pick) !important;
+    box-shadow: inset 0 0 0 1px var(--m-pick-line) !important;
+  }
+
+  /* the round "+" behind 新規作成 */
+  html[data-theme="claude"][data-mode="light"] .dframe-sidebar-body .df-new-circle {
+    background-color: #e9e4d9 !important;
+  }
+
+  /* 3. New-chat heading: "Claude" wordmark in ink --------------------- */
+  html[data-theme="claude"][data-mode="light"] [data-new-page-greeting-text] {
+    display: inline-block !important;
+    font-size: 0 !important;
+    color: transparent !important;
+    vertical-align: middle !important;
+  }
+
+  html[data-theme="claude"][data-mode="light"] [data-new-page-greeting-text]::before {
+    content: "Claude" !important;
+    display: inline-block !important;
+    color: #141414 !important;
+    font-family: Georgia, "Times New Roman", "Yu Mincho", serif !important;
+    font-size: clamp(38px, 4vw, 48px) !important;
+    font-weight: 400 !important;
+    line-height: 1.1 !important;
+    letter-spacing: -1.5px !important;
+  }
+
+  /* 4. Composer ------------------------------------------------------ */
+  /* The composer is a .bg-surface-3 panel (no <form>); its border is a
+     box-shadow ring, so the ring is redrawn here instead of a border. */
+  html[data-theme="claude"][data-mode="light"] .bg-surface-3:has([data-testid="chat-input"]) {
+    background: var(--m-tray) !important;
+    box-shadow: var(--m-highlight),
+                0 0 0 1px rgba(60, 50, 40, .07),
+                0 14px 36px -18px rgba(60, 50, 40, .22) !important;
+  }
+
+  html[data-theme="claude"][data-mode="light"] .bg-surface-3:has([data-testid="chat-input"]):focus-within {
+    box-shadow: var(--m-highlight),
+                0 0 0 1px rgba(60, 50, 40, .14),
+                0 14px 36px -18px rgba(60, 50, 40, .22) !important;
+  }
+
+  html[data-theme="claude"][data-mode="light"] [data-testid="chat-input"] {
+    color: var(--m-ink) !important;
+  }
+
+  /* 5. Menus, dialogs, code, selection ------------------------------- */
+  html[data-theme="claude"][data-mode="light"] [role="menu"],
+  html[data-theme="claude"][data-mode="light"] [role="listbox"],
+  html[data-theme="claude"][data-mode="light"] [role="dialog"] {
+    background-color: var(--m-card) !important;
+    color: var(--m-ink) !important;
+    border-color: var(--m-line-strong) !important;
+    border-radius: 14px !important;
+    box-shadow: var(--m-shadow) !important;
+  }
+
+  html[data-theme="claude"][data-mode="light"] [role="menuitem"][data-highlighted],
+  html[data-theme="claude"][data-mode="light"] [role="option"][data-highlighted],
+  html[data-theme="claude"][data-mode="light"] [role="option"][aria-selected="true"] {
+    background-color: var(--m-pick) !important;
+    color: var(--m-ink) !important;
+  }
+
+  html[data-theme="claude"][data-mode="light"] pre {
+    background-color: var(--m-mat) !important;
+    border: 1px solid var(--m-line) !important;
+    border-radius: 12px !important;
+  }
+
+  html[data-theme="claude"][data-mode="light"] ::selection {
+    background: var(--m-pick) !important;
+    color: var(--m-ink) !important;
+  }
+
+  html[data-theme="claude"][data-mode="light"] * {
+    scrollbar-color: #d4cdbf transparent;
+  }
+
+  /* Sidebar scrollbar: thin, hidden until the pointer is over the sidebar */
+  html[data-theme="claude"][data-mode="light"] .dframe-sidebar * {
+    scrollbar-width: thin !important;
+    scrollbar-color: transparent transparent !important;
+  }
+
+  html[data-theme="claude"][data-mode="light"] .dframe-sidebar:hover * {
+    scrollbar-color: #d4cdbf transparent !important;
+  }
+}
