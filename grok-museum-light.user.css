@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Grok — Museum Light
 @namespace    https://github.com/kyotomalmal25-sudo/grok-museum-light
-@version      1.0.0
+@version      1.0.4
 @author       チンパンジー (Chimpanzee)
 @license      CC0-1.0
 @description  Grokのライトモードを生成りとオリーブで統一。会話、Imagine、自動化、ライブラリに対応。
@@ -19,7 +19,7 @@ html:not(.dark) [class~="group/app-sidebar"] > .bg-surface-base {
   background-color: #fcf7e8 !important;
 }
 
-html:not(.dark) #grok-content-area h1.text-center:has(> span.relative.inline-block) {
+html:not(.dark) #grok-content-area:has(form[data-composer]) h1:has(> span) {
   display: flex !important;
   align-items: center;
   justify-content: center;
@@ -27,11 +27,11 @@ html:not(.dark) #grok-content-area h1.text-center:has(> span.relative.inline-blo
   font-size: 0 !important;
 }
 
-html:not(.dark) #grok-content-area h1.text-center:has(> span.relative.inline-block) > * {
+html:not(.dark) #grok-content-area:has(form[data-composer]) h1:has(> span) > * {
   display: none !important;
 }
 
-html:not(.dark) #grok-content-area h1.text-center:has(> span.relative.inline-block)::before {
+html:not(.dark) #grok-content-area:has(form[data-composer]) h1:has(> span)::before {
   content: "";
   width: 52px;
   height: 52px;
@@ -41,7 +41,7 @@ html:not(.dark) #grok-content-area h1.text-center:has(> span.relative.inline-blo
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 35 33'%3E%3Cpath d='M13.2371 21.0407L24.3186 12.8506C24.8619 12.4491 25.6384 12.6057 25.8973 13.2294C27.2597 16.5185 26.651 20.4712 23.9403 23.1851C21.2297 25.8989 17.4581 26.4941 14.0108 25.1386L10.2449 26.8843C15.6463 30.5806 22.2053 29.6665 26.304 25.5601C29.5551 22.3051 30.562 17.8683 29.6205 13.8673L29.629 13.8758C28.2637 7.99809 29.9647 5.64871 33.449 0.844576C33.5314 0.730667 33.6139 0.616757 33.6964 0.5L29.1113 5.09055V5.07631L13.2343 21.0436'/%3E%3Cpath d='M10.9503 23.0313C7.07343 19.3235 7.74185 13.5853 11.0498 10.2763C13.4959 7.82722 17.5036 6.82767 21.0021 8.2971L24.7595 6.55998C24.0826 6.07017 23.215 5.54334 22.2195 5.17313C17.7198 3.31926 12.3326 4.24192 8.67479 7.90126C5.15635 11.4239 4.0499 16.8403 5.94992 21.4622C7.36924 24.9165 5.04257 27.3598 2.69884 29.826C1.86829 30.7002 1.0349 31.5745 0.36364 32.5L10.9474 23.0341'/%3E%3C/svg%3E") center / contain no-repeat !important;
 }
 
-html:not(.dark) #grok-content-area h1.text-center:has(> span.relative.inline-block)::after {
+html:not(.dark) #grok-content-area:has(form[data-composer]) h1:has(> span)::after {
   content: "Grok";
   font-size: 42px;
   font-weight: 600;
@@ -362,18 +362,18 @@ html:not(.dark) #grok-app-root * {
     transition: none !important;
   }
 }/* ライトモード：美術館に馴染むGrokロゴ */
-html:not(.dark) #grok-content-area h1.text-center:has(> span.relative.inline-block) {
+html:not(.dark) #grok-content-area:has(form[data-composer]) h1:has(> span) {
   gap: 10px;
 }
 
-html:not(.dark) #grok-content-area h1.text-center:has(> span.relative.inline-block)::before {
+html:not(.dark) #grok-content-area:has(form[data-composer]) h1:has(> span)::before {
   width: 40px;
   height: 40px;
   flex: 0 0 40px;
   background: #3d3530 !important;
 }
 
-html:not(.dark) #grok-content-area h1.text-center:has(> span.relative.inline-block)::after {
+html:not(.dark) #grok-content-area:has(form[data-composer]) h1:has(> span)::after {
   content: "Grok";
   font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
   font-size: 48px;
@@ -488,5 +488,103 @@ html:not(.dark) [data-testid="user-message"] {
   border: 1px solid #e8dfcb;
   border-radius: 15px !important;
   box-shadow: 0 2px 8px -4px rgba(92, 70, 40, .12);
+}
+
+/* Current Grok navigation and composer */
+@media (min-width: 768px) {
+  html:not(.dark):not([data-theme="dark"]) #app-sidebar {
+    box-sizing: border-box !important;
+    margin: 14px 0 14px 14px !important;
+    height: calc(100dvh - 28px) !important;
+    border: 1px solid #e8dfcb !important;
+    border-radius: 22px !important;
+    background: #f2ecda !important;
+    box-shadow: 0 12px 28px -18px rgba(92,70,40,.25) !important;
+    overflow: hidden !important;
+  }
+}
+html:not(.dark):not([data-theme="dark"]) #app-sidebar { color: #3d3530 !important; background-color: #f2ecda !important; }
+html:not(.dark):not([data-theme="dark"]) #app-sidebar [data-sidebar-item-label] { color: #3d3530 !important; }
+html:not(.dark):not([data-theme="dark"]) #app-sidebar button:hover { background-color: #e6e7ce !important; }
+html:not(.dark):not([data-theme="dark"]) form[data-composer] {
+  border: 1px solid #d9cdb4 !important; border-radius: 15px !important;
+  background: #faf6eb !important;
+  box-shadow: 0 24px 60px -30px rgba(92,70,40,.30), 0 2px 8px -3px rgba(92,70,40,.10) !important;
+}
+html:not(.dark):not([data-theme="dark"]) form[data-composer]:focus-within { border-color: #a6a486 !important; }
+html:not(.dark):not([data-theme="dark"]) form[data-composer] .ProseMirror { color: #3d3530 !important; }
+html:not(.dark):not([data-theme="dark"]) form[data-composer] [data-placeholder]::before { color: #8c8073 !important; }
+html:not(.dark):not([data-theme="dark"]) form[data-composer] button { color: #6c6057 !important; }
+
+/* Current light surfaces: navigation, code cards, settings and controls. */
+html:not(.dark):not([data-theme="dark"]) #app-sidebar button[aria-keyshortcuts="Control+J"],
+html:not(.dark):not([data-theme="dark"]) #app-sidebar [data-account-action],
+html:not(.dark):not([data-theme="dark"]) [data-testid="composer-steer-pill"] {
+  background-color: #f5efdf !important;
+  color: #4f5835 !important;
+  border-color: #e1d7c1 !important;
+}
+html:not(.dark):not([data-theme="dark"]) #app-sidebar button[aria-keyshortcuts="Control+J"]:hover,
+html:not(.dark):not([data-theme="dark"]) #app-sidebar [data-account-action]:hover { background-color: #e6e7ce !important; }
+html:not(.dark):not([data-theme="dark"]) [data-code-card] {
+  background-color: #f5efdf !important;
+  border-color: #e1d7c1 !important;
+  color: #3d3530 !important;
+}
+html:not(.dark):not([data-theme="dark"]) [role="dialog"]:has([data-settings-shell]),
+html:not(.dark):not([data-theme="dark"]) [data-settings-shell] {
+  background-color: #faf6eb !important;
+  color: #3d3530 !important;
+}
+html:not(.dark):not([data-theme="dark"]) [data-settings-shell] nav[aria-label] {
+  background-color: #f2ecda !important;
+  border-color: #e8dfcb !important;
+}
+html:not(.dark):not([data-theme="dark"]) [data-settings-tab][aria-current="true"] {
+  background-color: #e6e7ce !important;
+  color: #4f5835 !important;
+}
+html:not(.dark):not([data-theme="dark"]) [data-settings-tab]:hover { background-color: #e9e3d1 !important; }
+html:not(.dark):not([data-theme="dark"]) [data-pane-body] [data-flush],
+html:not(.dark):not([data-theme="dark"]) [data-pane-body] [data-flush] > header { background-color: #faf6eb !important; }
+html:not(.dark):not([data-theme="dark"]) [data-composer] button[data-pressed] {
+  background-color: #e6e7ce !important;
+  color: #4f5835 !important;
+}
+
+/* Additional current Grok surfaces, scoped to light mode. */
+html:not(.dark):not([data-theme="dark"]) [data-title-pill-disclosure] {
+  background-color: #f2ecda !important;
+  color: #3d3530 !important;
+  border-color: #e1d7c1 !important;
+}
+html:not(.dark):not([data-theme="dark"]) #right-pane,
+html:not(.dark):not([data-theme="dark"]) #right-pane > div,
+html:not(.dark):not([data-theme="dark"]) #right-pane [data-bot-pane-voice-chat] {
+  background-color: #faf6eb !important;
+  color: #3d3530 !important;
+  border-color: #e8dfcb !important;
+}
+html:not(.dark):not([data-theme="dark"]) aside[aria-label="投稿の詳細"] {
+  background-color: #f2ecda !important;
+  color: #3d3530 !important;
+}
+html:not(.dark):not([data-theme="dark"]) [data-slot="card-body"] {
+  background-color: #faf6eb !important;
+  color: #3d3530 !important;
+}
+html:not(.dark):not([data-theme="dark"]) [data-desktop-composer] [role="group"] button[aria-pressed="true"] {
+  background-color: #e6e7ce !important;
+  color: #4f5835 !important;
+}
+html:not(.dark):not([data-theme="dark"]) [class~="group/chip"] {
+  background-color: #f2ecda !important;
+  color: #4f5835 !important;
+  border-color: #e1d7c1 !important;
+}
+
+/* Right pane: warm the new-tab surface while preserving its contents. */
+html:not(.dark):not([data-theme="dark"]) #right-pane [data-pane-body] div:has(> [data-slot="surface-loader"]) {
+  background-color: #f7f1e2 !important;
 }
 }
