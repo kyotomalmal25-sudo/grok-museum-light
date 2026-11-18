@@ -24,7 +24,7 @@ Claudeのライト表示を、甘さを抑えた紙色と墨色の文字でま�
 - ボタンなどのアクセントカラーはClaude純正のまま。
 - ライトモードのみ適用。ダークモードは変更しません。
 
-Chrome・日本語UIで表示を確認（2026年10月22日）。新規チャット、会話、プロジェクト、Artifacts、スケジュール済みタスク、カスタマイズ、Design、設定、サイドバーの開閉を確認しています。モバイル・英語UIは未確認です。ClaudeのUI更新によってセレクターの調整が必要になる場合があります。
+Chrome・日本語UIで表示を確認（2026年10月22日）。新規チャット、会話、プロジェクト、Artifacts、スケジュール済みタスク、カスタマイズ、Design、設定、サイドバーの開閉を確認しています。モバイル・英語UIは未確認です。ClaudeのUI更新によってセレクターの調整が必要になる場合があります。 2026年11月19日、Claudeの新UIでのサイドバー・本文・メニューの配色を再確認しました。
 
 ## English
 
@@ -32,7 +32,7 @@ A Stylus light theme for Claude that pairs a muted paper tone with ink-dark text
 
 Install the UserCSS, select light appearance in Claude, and disable other styles that modify the same elements. Dark mode is unchanged.
 
-Checked with Chrome and the Japanese UI on October 22, 2026. Mobile and English UI are unverified. Claude UI updates may require selector updates.
+Checked with Chrome and the Japanese UI on October 22, 2026. Mobile and English UI are unverified. Claude UI updates may require selector updates. Sidebar, body text and menu colors were re-checked on Claude's new UI on November 19, 2026.
 
 ## Credits and license
 
@@ -44,6 +44,7 @@ CSS and documentation: CC0-1.0. Anthropic (the Claude development team) is permi
 
 ## Changelog
 
+- **2.6.0 — 2026-11-19:** Adapted to Claude's new UI, which had turned the sidebar and menus pure white and the text pure black, breaking the paper-and-ink palette.
 - **2.5.0 — 2026-10-22:** Selected and hovered sidebar rows use a muted beige matched to the palette; the round "+" behind 新規作成 follows the same tone.
 - **2.4.2 — 2026-10-22:** Full rewrite. Muted paper and ink palette replaces the olive accents; the sidebar becomes a floating rounded card that respects the collapsed state; composer styling targets Claude's current structure; native white surfaces no longer leak through nested elements.
 - **1.0.0:** Initial release.
