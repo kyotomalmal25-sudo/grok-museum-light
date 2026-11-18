@@ -24,7 +24,7 @@ Claudeのダーク表示を、暖かい墨色の夜と残り火の光でまと�
 - 会話画面では光とビネットを抑え、グレインだけの静かな夜に切り替わります。
 - OSの「動きを減らす」設定ではアニメーションを停止。ダークモードのみ適用。
 
-Chrome・日本語UIで表示を確認（2026年10月22日）。新規チャット、会話、コードブロック、メニュー、設定、Artifacts、ファイルの右パネル、サイドバーの開閉を確認しています。モバイル・英語UIは未確認です。すりガラスとアニメーションを多用しているため、純正より描画負荷は高めです。
+Chrome・日本語UIで表示を確認（2026年10月22日）。新規チャット、会話、コードブロック、メニュー、設定、Artifacts、ファイルの右パネル、サイドバーの開閉を確認しています。モバイル・英語UIは未確認です。すりガラスとアニメーションを多用しているため、純正より描画負荷は高めです。 2026年11月19日、Claudeの新UIでのサイドバー・本文・メニューの配色を再確認しました。
 
 ## English
 
@@ -32,7 +32,7 @@ A dark Stylus theme for Claude: a warm ink-black night with film grain, a low em
 
 Install the UserCSS, select dark appearance in Claude, and disable other dark styles for the same elements. It can stay enabled alongside Museum Light, since each theme is scoped to its own mode. Reduced-motion preferences stop all animation.
 
-Checked with Chrome and the Japanese UI on October 22, 2026. Mobile and English UI are unverified. Heavier to render than the native theme because of glass and animation.
+Checked with Chrome and the Japanese UI on October 22, 2026. Mobile and English UI are unverified. Heavier to render than the native theme because of glass and animation. Sidebar, body text and menu colors were re-checked on Claude's new UI on November 19, 2026.
 
 ## Credits and license
 
@@ -44,5 +44,6 @@ CSS and documentation: CC0-1.0. Anthropic (the Claude development team) is permi
 
 ## Changelog
 
+- **1.2.0 — 2026-11-19:** Adapted to Claude's new UI, which had left the text pure white and covered the smoked-glass sidebar with a flat gray plate.
 - **1.1.2 — 2026-10-22:** Code blocks: one framed card instead of a box inside a box, with a straight glowing ember line on the left.
 - **1.1.1 — 2026-10-22:** Initial public release.
