@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Claude — Ember Night
 @namespace    https://github.com/kyotomalmal25-sudo/grok-museum-light
-@version      1.1.2
+@version      1.2.0
 @author       チンパンジー (Chimpanzee)
 @license      CC0-1.0
 @description  Claudeのダーク表示を、暖かい墨色の夜と残り火の光で。立ちのぼる火の粉、呼吸する灯り、ゆっくり回る入力欄の縁。
@@ -76,6 +76,31 @@
     --cds-neutral-400: #6f665d !important;
     --cds-neutral-600: #a89c8f !important;
     --cds-neutral-900: #fff6ec !important;
+  }
+
+  /* 1b. Claude's newer UI re-declares its tokens on EVERY descendant of
+     [data-cds-fizzy-lake~="color"], which beat the palette above and left
+     text pure white and the sidebar list a cold #1f1f1f. Re-assert there. */
+  html[data-theme="claude"][data-mode="dark"] :is([data-cds-fizzy-lake~="color"], [data-cds-fizzy-lake~="color"] *) {
+    --cds-surface-0: var(--en-night) !important;
+    --cds-surface-1: var(--en-page) !important;
+    --cds-surface-2: var(--en-raise) !important;
+    --cds-surface-3: var(--en-raise) !important;
+    --cds-surface-panel: var(--en-pop) !important;
+    --cds-surface-popover: var(--en-pop) !important;
+    --cds-text-primary: var(--en-ink) !important;
+    --cds-text-secondary: var(--en-muted) !important;
+    --cds-text-stays-secondary: var(--en-muted) !important;
+    --cds-text-muted: var(--en-faint) !important;
+    --cds-border: var(--en-line) !important;
+    --cds-border-line: var(--en-line) !important;
+    --cds-border-line-muted: var(--en-line) !important;
+    --cds-fill-field: var(--en-raise) !important;
+    --cds-fill-ghost-hover: var(--en-hover) !important;
+    --cds-fill-ghost-selected: var(--en-pick) !important;
+    --cds-fizzy-lake-color-sidebar: transparent !important;
+    --cds-fizzy-lake-color-secondary: var(--en-muted) !important;
+    --cds-fizzy-lake-color-plain-secondary: var(--en-muted) !important;
   }
 
   /* 2. The night: grain, vignette and a low ember glow -------------- */
@@ -211,6 +236,23 @@
       inset 0 0 0 1px rgba(255, 228, 196, .02),
       var(--en-shadow) !important;
     overflow: hidden !important;
+  }
+
+  /* The newer UI paints the scrolling list with its own solid plate
+     (--df-web-sidebar-bg), which hid the glass. Clear it; sticky section
+     headers that reuse the same variable get a smoked fill of their own. */
+  html[data-theme="claude"][data-mode="dark"] .dframe-sidebar {
+    --df-web-sidebar-bg: transparent !important;
+    --df-web-sidebar-bg-image: none !important;
+  }
+
+  html[data-theme="claude"][data-mode="dark"] .dframe-sidebar .dframe-nav-scroll {
+    background: transparent !important;
+  }
+
+  html[data-theme="claude"][data-mode="dark"] .dframe-sidebar .df-section-lifted::before,
+  html[data-theme="claude"][data-mode="dark"] .dframe-sidebar .df-pin-section-reveal[data-floats]::before {
+    background: rgba(30, 26, 22, .96) !important;
   }
 
   /* the scrolling list melts into the glass at its top and bottom edges */
