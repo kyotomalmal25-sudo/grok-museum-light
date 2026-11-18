@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Claude — Museum Light
 @namespace    https://github.com/kyotomalmal25-sudo/grok-museum-light
-@version      2.5.0
+@version      2.6.0
 @author       チンパンジー (Chimpanzee)
 @license      CC0-1.0
 @description  Claudeのライト表示を、くすんだ紙色と墨色の文字で落ち着いた雰囲気に。サイドバーは角丸の浮いたカードに。
@@ -76,6 +76,31 @@
     --df-surface-primary: 44 40.7% 94.7% !important;
   }
 
+  /* 1b. Claude's newer UI re-declares its tokens on EVERY descendant of
+     [data-cds-fizzy-lake~="color"] (pure #fff surfaces, #000 text), which
+     beat the palette above. Re-assert the palette there. */
+  html[data-theme="claude"][data-mode="light"] :is([data-cds-fizzy-lake~="color"], [data-cds-fizzy-lake~="color"] *) {
+    --cds-surface-0: var(--m-paper) !important;
+    --cds-surface-1: var(--m-paper) !important;
+    --cds-surface-2: var(--m-card) !important;
+    --cds-surface-3: var(--m-card) !important;
+    --cds-surface-panel: var(--m-card) !important;
+    --cds-surface-popover: var(--m-card) !important;
+    --cds-text-primary: var(--m-ink) !important;
+    --cds-text-secondary: var(--m-muted) !important;
+    --cds-text-stays-secondary: var(--m-muted) !important;
+    --cds-text-muted: var(--m-faint) !important;
+    --cds-border: var(--m-line) !important;
+    --cds-border-line: var(--m-line-strong) !important;
+    --cds-border-line-muted: var(--m-line) !important;
+    --cds-fill-field: var(--m-card) !important;
+    --cds-fill-ghost-hover: var(--m-mat) !important;
+    --cds-fill-ghost-selected: var(--m-pick) !important;
+    --cds-fizzy-lake-color-sidebar: var(--m-tray) !important;
+    --cds-fizzy-lake-color-secondary: var(--m-muted) !important;
+    --cds-fizzy-lake-color-plain-secondary: var(--m-muted) !important;
+  }
+
   /* 2. Sidebar ------------------------------------------------------- */
   html[data-theme="claude"][data-mode="light"] .dframe-sidebar {
     background-color: var(--m-paper) !important;
@@ -94,6 +119,8 @@
     left: 12px !important;
     height: auto !important;
     width: calc(var(--df-sidebar-width, 288px) - 12px) !important;
+    --df-web-sidebar-bg: var(--m-tray) !important;   /* the scrolling list paints with this */
+    --df-web-sidebar-bg-image: none !important;
     background: var(--m-tray) !important;
     border: 1px solid rgba(60, 50, 40, .05) !important;
     border-radius: 20px !important;
